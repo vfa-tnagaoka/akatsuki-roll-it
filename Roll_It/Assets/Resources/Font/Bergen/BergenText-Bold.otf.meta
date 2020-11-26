@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 96e2a0043f4fc44a0a40971ca6f40c6d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Bergen Text
+  fontNames:
+  - Bergen Text
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 419bcca00962640ad86eb4c058f62e67, type: 3}
+  - {fileID: 12800000, guid: 4517b0ac4416b473aa59ad13e5764c43, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
