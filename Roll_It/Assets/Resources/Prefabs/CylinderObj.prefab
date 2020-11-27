@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2946305700305558068}
   - component: {fileID: 2946305700305558069}
   - component: {fileID: 2946305700305558070}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Line
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,9 +102,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2946305700668144138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Line
-  m_TagString: Untagged
+  m_TagString: Line
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2946305700900424713}
   - component: {fileID: 2946305700900424712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CylinderObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,8 +171,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CylinderGo: {fileID: 2946305701824086505}
   LineGo: {fileID: 2946305700668144139}
-  StarPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
+  colors:
+  - {r: 0.9433962, g: 0.09344962, b: 0.09344962, a: 0}
+  - {r: 0.047481313, g: 0.9150943, b: 0.09231218, a: 0}
+  - {r: 0.9433962, g: 0.7537421, b: 0.057849795, a: 0}
+  - {r: 0.94509804, g: 0.058823526, b: 0.67741185, a: 0}
+  - {r: 0.058823526, g: 0.94509804, b: 0.77712715, a: 0}
+  Index: 0
 --- !u!1 &2946305701824086505
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,9 +190,9 @@ GameObject:
   - component: {fileID: 2946305701824086509}
   - component: {fileID: 2946305701824086510}
   - component: {fileID: 2946305701824086511}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Cylinder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

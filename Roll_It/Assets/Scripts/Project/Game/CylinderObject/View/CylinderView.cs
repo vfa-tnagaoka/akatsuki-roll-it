@@ -10,41 +10,46 @@ public class CylinderView : AbstractView
     [SerializeField] private GameObject CylinderGo;
     [SerializeField] private GameObject LineGo;
 
-    [SerializeField] private Transform StarPosition;
-    [SerializeField] private Transform EndPosition;
+    [SerializeField] Color[] colors;
 
-    private bool isOpen = false;
+    public bool IsOpen = false;
 
-    private void Start() {
-        this.isOpen = false;
+    public int Index;
 
-        // Open();
-        StartCoroutine(OpenAndClose());
+    private void Start()
+    {
+        this.IsOpen = true;
+    }
+
+    public void RandomColor()
+    {
+        Material material = new Material(Shader.Find("Standard"));
+        material.color = this.colors[UnityEngine.Random.Range(0, colors.Length)];
+        CylinderGo.GetComponent<MeshRenderer>().material = material;
+        LineGo.transform.GetChild(0).GetComponent<MeshRenderer>().material = material;
     }
 
     public void Open()
     {
-        this.isOpen = true;
+        this.IsOpen = true;
 
-        this.CylinderGo.transform.DOLocalMoveZ(5,2f);
-        this.LineGo.transform.DOScaleZ(5,2f);
-        
+        this.CylinderGo.transform.DOLocalMoveZ(5, 2f);
+        this.LineGo.transform.DOScaleZ(5, 2f);
+
     }
 
     public void Close()
     {
-        this.isOpen = false;
+        this.IsOpen = false;
 
-        this.CylinderGo.transform.DOLocalMoveZ(0.5f,2f);
-        this.LineGo.transform.DOScaleZ(1,2f);
+        this.CylinderGo.transform.DOLocalMoveZ(0.5f, 2f);
+        this.LineGo.transform.DOScaleZ(1, 2f);
     }
 
-    IEnumerator OpenAndClose()
+    public void ResetCylinder()
     {
-        Open();
-
-        yield return new WaitForSeconds(6);
-
         Close();
+        // this.LineGo.transform.localScale.Set(1,1,1);
+        // this.LineGo.transform.localPosition = new Vector3(0,0,0.5f);
     }
 }

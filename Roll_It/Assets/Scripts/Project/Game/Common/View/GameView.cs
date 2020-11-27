@@ -11,8 +11,140 @@ namespace Project.Game.View
 {
     public class GameView : AbstractView
     {
-        [SerializeField] Camera myMainCamera;
-        [SerializeField] Camera myModelCamera;
-        
+        [SerializeField] LayerMask layer;
+        [SerializeField] private Transform cylinderParent;
+        [SerializeField] private WinScreen winScreen;
+
+        [SerializeField] private List<CylinderView> mapContent = new List<CylinderView>();
+        [SerializeField] private Transform[] Levels;
+
+        private GameObject cylinderPrefab;
+        private int currentIndex = 0;
+
+        [SerializeField] private int numberCylinder;
+        [SerializeField] private int closeCylinder;
+        private System.DateTime startTime;
+
+
+        private void Start()
+        {
+            this.cylinderPrefab = Resources.Load<GameObject>(ResourcePathConfig.CylindePath);
+            winScreen.Next.Subscribe(CreateMap).AddTo(gameObject);
+
+            CreateMap();
+        }
+
+        private void Update()
+        {
+            CheckRaycast();
+        }
+
+        public void CheckRaycast()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit raycastHit;
+                if (Physics.Raycast(ray, out raycastHit, 1000, this.layer))
+                {
+                    Debug.Log("Something Hit " + raycastHit.collider.name);
+                    CylinderView view;
+                    if (raycastHit.collider.CompareTag("Line"))
+                    {
+                        view = raycastHit.collider.transform.parent.parent.GetComponent<CylinderView>();
+                    }
+                    else
+                    {
+                        view = raycastHit.collider.transform.parent.GetComponent<CylinderView>();
+                    }
+
+                    if (view.IsOpen)
+                    {
+                        view.Close();
+                        this.closeCylinder++;
+                    }
+
+                    if (this.closeCylinder >= this.numberCylinder)
+                    {
+                        winScreen.Show((float)((System.DateTime.Now - startTime).TotalSeconds));
+
+                        // StartCoroutine(Win());
+                    }
+                }
+            }
+        }
+
+        public IEnumerator Win()
+        {
+            yield return new WaitForSeconds(2f);
+            winScreen.Show((float)((System.DateTime.Now - startTime).TotalSeconds));
+        }
+
+        public void CreateMap()
+        {
+            Debug.Log("-------> Create Map");
+            this.ResetMap();
+
+            Transform level = this.Levels[UnityEngine.Random.Range(0, Levels.Length)];
+            level.SetActive(true);
+
+            numberCylinder = level.childCount;
+            float yPos = 0;
+
+            for (int i = 0; i < numberCylinder; i++)
+            {
+                var objPos = level.GetChild(i);
+                Vector3 posCylinder = new Vector3(objPos.position.x, yPos, objPos.position.z);
+                this.InitCylinder(i, posCylinder, objPos.rotation);
+                objPos.SetActive(false);
+                yPos += 0.01f;
+            }
+
+            startTime = System.DateTime.Now;
+        }
+
+        public void InitCylinder(int index, Vector3 position, Quaternion quaternion)
+        {
+            GameObject cylinderGo;
+            CylinderView cylinderView;
+            if (index < this.mapContent.Count)
+            {
+                cylinderGo = this.mapContent[index].gameObject;
+                cylinderView = this.mapContent[index];
+            }
+            else
+            {
+                cylinderGo = Instantiate(this.cylinderPrefab, this.cylinderParent);
+                cylinderView = cylinderGo.GetComponent<CylinderView>();
+                this.mapContent.Add(cylinderView);
+            }
+
+            cylinderGo.SetActive(true);
+
+            // Vector3 euler = cylinderGo.transform.eulerAngles;
+            // euler.y = UnityEngine.Random.Range(0f, 180f);
+            // cylinderGo.transform.eulerAngles = euler;
+            cylinderGo.transform.position = position;
+            cylinderGo.transform.rotation = quaternion;
+
+            cylinderView.Index = index;
+            cylinderView.RandomColor();
+            cylinderView.Open();
+
+        }
+
+        public void ResetMap()
+        {
+            this.numberCylinder = 0;
+            this.closeCylinder = 0;
+
+            if (this.mapContent.Count <= 0) return;
+            foreach (var cylinder in this.mapContent)
+            {
+                cylinder.ResetCylinder();
+                cylinder.SetActive(false);
+            }
+        }
+
     }
 }

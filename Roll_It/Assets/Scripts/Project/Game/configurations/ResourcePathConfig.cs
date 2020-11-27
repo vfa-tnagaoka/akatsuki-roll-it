@@ -7,4 +7,6 @@ public class ResourcePathConfig
     public const string GameScreenViewPath = "Commons/Game/GameScreenView";
     public const string GameResultScreenViewPath = "UI/Screen/Result/ResultScreenView";
     public const string GameViewPath = "Commons/Game/GameView";
+
+    public const string CylindePath = "Prefabs/CylinderObj";
 }
