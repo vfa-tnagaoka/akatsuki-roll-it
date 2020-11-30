@@ -90,7 +90,7 @@ namespace Project.Game.View
                     {
                         // this.canRayCast = false;
                         // winScreen.Show((float)((System.DateTime.Now - startTime).TotalSeconds));
-
+                        this.closeCylinder = 0;
                         StartCoroutine(Win());
                     }
                 }
