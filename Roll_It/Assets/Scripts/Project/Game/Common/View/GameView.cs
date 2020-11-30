@@ -50,7 +50,9 @@ namespace Project.Game.View
             this.canRayCast = false;
             this.cylinderPrefab = Resources.Load<GameObject>(ResourcePathConfig.CylindePath);
             winScreen.Next.Subscribe(CreateMap).AddTo(gameObject);
-
+            RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
+            RenderSettings.ambientSkyColor = Color.white;
+            RenderSettings.ambientIntensity = 0.1f;
             CreateMap();
         }
 
