@@ -24,10 +24,12 @@ namespace Project.Game.View
         [SerializeField] private int numberCylinder;
         [SerializeField] private int closeCylinder;
         private System.DateTime startTime;
+        private bool canRayCast = false;
 
 
         private void Start()
         {
+            this.canRayCast = false;
             this.cylinderPrefab = Resources.Load<GameObject>(ResourcePathConfig.CylindePath);
             winScreen.Next.Subscribe(CreateMap).AddTo(gameObject);
 
@@ -41,13 +43,12 @@ namespace Project.Game.View
 
         public void CheckRaycast()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && this.canRayCast)
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit raycastHit;
                 if (Physics.Raycast(ray, out raycastHit, 1000, this.layer))
                 {
-                    Debug.Log("Something Hit " + raycastHit.collider.name);
                     CylinderView view;
                     if (raycastHit.collider.CompareTag("Line"))
                     {
@@ -60,12 +61,15 @@ namespace Project.Game.View
 
                     if (view.IsOpen)
                     {
-                        view.Close();
-                        this.closeCylinder++;
+                        if(view.Close())
+                        {
+                            this.closeCylinder++;
+                        }
                     }
 
                     if (this.closeCylinder >= this.numberCylinder)
                     {
+                        this.canRayCast = false;
                         winScreen.Show((float)((System.DateTime.Now - startTime).TotalSeconds));
 
                         // StartCoroutine(Win());
@@ -85,6 +89,7 @@ namespace Project.Game.View
             Debug.Log("-------> Create Map");
             this.ResetMap();
 
+            this.canRayCast = true;
             Transform level = this.Levels[UnityEngine.Random.Range(0, Levels.Length)];
             level.SetActive(true);
 
@@ -120,14 +125,10 @@ namespace Project.Game.View
             }
 
             cylinderGo.SetActive(true);
-
-            // Vector3 euler = cylinderGo.transform.eulerAngles;
-            // euler.y = UnityEngine.Random.Range(0f, 180f);
-            // cylinderGo.transform.eulerAngles = euler;
             cylinderGo.transform.position = position;
             cylinderGo.transform.rotation = quaternion;
 
-            cylinderView.Index = index;
+            cylinderView.ID = index;
             cylinderView.RandomColor();
             cylinderView.Open();
 
