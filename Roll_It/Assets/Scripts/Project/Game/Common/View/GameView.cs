@@ -81,6 +81,7 @@ namespace Project.Game.View
                     {
                         if (view.Close())
                         {
+                            // Debug.Log("closeCylinder -- count");
                             this.closeCylinder++;
                         }
                     }
@@ -115,7 +116,7 @@ namespace Project.Game.View
             Transform level = this.Levels[indexLv];
             level.SetActive(true);
 
-            Debug.Log("Create Map ---lv--> " + level.childCount);
+            // Debug.Log("Create Map ---lv--> " + level.childCount);
 
             numberCylinder = level.childCount;
             float yPos = 0;
@@ -130,7 +131,7 @@ namespace Project.Game.View
             }
 
             startTime = System.DateTime.Now;
-            Debug.Log("Create Map ---lv--> end");
+            // Debug.Log("Create Map ---lv--> end");
 
         }
 
@@ -162,6 +163,7 @@ namespace Project.Game.View
 
         public void ResetMap()
         {
+            // Debug.LogWarning("------> reset map");
             this.numberCylinder = 0;
             this.closeCylinder = 0;
 

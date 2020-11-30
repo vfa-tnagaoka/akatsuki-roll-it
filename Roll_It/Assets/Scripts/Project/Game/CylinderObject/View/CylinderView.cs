@@ -14,6 +14,7 @@ public class CylinderView : AbstractView
 
     public bool IsOpen = false;
 
+
     public int ID;
 
     private Dictionary<int, CylinderView> belowObjects = new Dictionary<int, CylinderView>();
@@ -34,14 +35,17 @@ public class CylinderView : AbstractView
 
     public void Open()
     {
-        this.IsOpen = true;
 
-        this.CylinderGo.transform.DOLocalMoveZ(5, 2f);
-        this.LineGo.transform.DOScaleZ(5, 2f);
+        this.CylinderGo.transform.DOLocalMoveZ(5, 1f);
+        this.LineGo.transform.DOScaleZ(5, 1f).OnComplete(() =>
+        {
+            this.IsOpen = true;
+        });
     }
 
     public bool Close()
     {
+        if(!this.IsOpen) return false;
         if (this.aboveObjects.Count <= 0)
         {
             this.IsOpen = false;
@@ -71,11 +75,13 @@ public class CylinderView : AbstractView
 
     public void ResetCylinder()
     {
-        Close();
+        // Close();
         this.belowObjects.Clear();
         this.aboveObjects.Clear();
-        // this.LineGo.transform.localScale.Set(1,1,1);
-        // this.LineGo.transform.localPosition = new Vector3(0,0,0.5f);
+        this.LineGo.transform.localScale.Set(1, 1, 1);
+        this.LineGo.transform.localPosition = new Vector3(0, 0.067f, -0.19f);
+        this.CylinderGo.transform.localPosition = new Vector3(0, 0.5f, 0.5f);
+        this.IsOpen = false;
     }
 
     public void OnTriggerEnter(Collider other)
