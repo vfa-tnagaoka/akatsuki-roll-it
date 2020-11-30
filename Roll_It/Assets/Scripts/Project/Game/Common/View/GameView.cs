@@ -88,10 +88,10 @@ namespace Project.Game.View
 
                     if (this.closeCylinder >= this.numberCylinder)
                     {
-                        this.canRayCast = false;
-                        winScreen.Show((float)((System.DateTime.Now - startTime).TotalSeconds));
+                        // this.canRayCast = false;
+                        // winScreen.Show((float)((System.DateTime.Now - startTime).TotalSeconds));
 
-                        // StartCoroutine(Win());
+                        StartCoroutine(Win());
                     }
                 }
             }
@@ -100,6 +100,8 @@ namespace Project.Game.View
         public IEnumerator Win()
         {
             yield return new WaitForSeconds(2f);
+            // Debug.LogError("win screen");
+            this.canRayCast = false;
             winScreen.Show((float)((System.DateTime.Now - startTime).TotalSeconds));
         }
 
