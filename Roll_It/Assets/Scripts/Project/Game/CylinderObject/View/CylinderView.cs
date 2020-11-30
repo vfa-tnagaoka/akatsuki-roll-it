@@ -93,6 +93,6 @@ public class CylinderView : AbstractView
             }
         }
 
-        Debug.Log("OnTriggerEnter --> " + this.ID + " -above- " + this.aboveObjects.Count + " -below- " + this.belowObjects.Count);
+        // Debug.Log("OnTriggerEnter --> " + this.ID + " -above- " + this.aboveObjects.Count + " -below- " + this.belowObjects.Count);
     }
 }

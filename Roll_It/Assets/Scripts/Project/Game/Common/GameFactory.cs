@@ -40,33 +40,40 @@ namespace Project.Game
 
         public IModel Instantiate()
         {
+            Debug.Log("---> game factory");
+            GameModel model = new GameModel();
+            GameView gameView = CreateGameView();
+            WinScreen winView = CreateWinView();
 
-            // GameModel model = new GameModel(gameData);
-            // GameView view = CreateGameView();
-            // GameScreenView screenView = CreateGameScreenView();
-            // ResultScreenView resultView = CreateResultScreenView();
+            gameView.WinScreen = winView;
 
-            // ScreenLoader.GetCanvas().transform.GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
+            ScreenLoader.GetCanvas().transform.GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
 
-            // new GamePresenter(model, view, screenView, resultView).AddTo(model.disposables);
+            new GamePresenter(model, gameView).AddTo(model.disposables);
 
-            // return model;
-            return null;
+            return model;
         }
 
-        public static GameView CreateGameView()
+        public  GameView CreateGameView()
         {
             return Theater.Load<GameView>(ResourcePathConfig.GameViewPath);
         }
 
-        public static GameScreenView CreateGameScreenView()
+        public WinScreen CreateWinView()
         {
-            return ScreenLoader.Load<GameScreenView>(ResourcePathConfig.GameScreenViewPath, 3);
+            return Theater.Load<WinScreen>(ResourcePathConfig.WinViewPath);
         }
 
-        public ResultScreenView CreateResultScreenView()
-        {
-            return ScreenLoader.Load<ResultScreenView>(ResourcePathConfig.GameResultScreenViewPath, 4);
-        }
+
+
+        // public static GameScreenView CreateGameScreenView()
+        // {
+        //     return ScreenLoader.Load<GameScreenView>(ResourcePathConfig.GameScreenViewPath, 3);
+        // }
+
+        // public ResultScreenView CreateResultScreenView()
+        // {
+        //     return ScreenLoader.Load<ResultScreenView>(ResourcePathConfig.GameResultScreenViewPath, 4);
+        // }
     }
 }

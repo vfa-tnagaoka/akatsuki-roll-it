@@ -26,8 +26,26 @@ namespace Project.Game.View
         private System.DateTime startTime;
         private bool canRayCast = false;
 
+        public WinScreen WinScreen
+        {
+            get
+            {
+                return this.winScreen;
+            }
+
+            set
+            {
+                this.winScreen = value;
+            }
+        }
+
 
         private void Start()
+        {
+            Init();
+        }
+
+        public void Init()
         {
             this.canRayCast = false;
             this.cylinderPrefab = Resources.Load<GameObject>(ResourcePathConfig.CylindePath);
@@ -61,7 +79,7 @@ namespace Project.Game.View
 
                     if (view.IsOpen)
                     {
-                        if(view.Close())
+                        if (view.Close())
                         {
                             this.closeCylinder++;
                         }
@@ -86,12 +104,18 @@ namespace Project.Game.View
 
         public void CreateMap()
         {
-            Debug.Log("-------> Create Map");
             this.ResetMap();
+            int index = UnityEngine.Random.Range(0, Levels.Length);
+            LoadMapLevel(index);
+        }
 
+        public void LoadMapLevel(int indexLv)
+        {
             this.canRayCast = true;
-            Transform level = this.Levels[UnityEngine.Random.Range(0, Levels.Length)];
+            Transform level = this.Levels[indexLv];
             level.SetActive(true);
+
+            Debug.Log("Create Map ---lv--> " + level.childCount);
 
             numberCylinder = level.childCount;
             float yPos = 0;
@@ -106,6 +130,8 @@ namespace Project.Game.View
             }
 
             startTime = System.DateTime.Now;
+            Debug.Log("Create Map ---lv--> end");
+
         }
 
         public void InitCylinder(int index, Vector3 position, Quaternion quaternion)

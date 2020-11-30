@@ -10,7 +10,7 @@ public class Main : MonoBehaviour
     void Start()
     {
         ScreenLoader.SetMaxAspectRatio(3.0f);
-        ScreenManager.Instance.Replace(new GameFactory());
+        // ScreenManager.Instance.Replace(new GameFactory());
     }
 
 }

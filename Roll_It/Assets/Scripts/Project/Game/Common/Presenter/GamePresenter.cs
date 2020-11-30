@@ -13,10 +13,9 @@ namespace Project.Game.Presenter
 
     public class GamePresenter : AbstractPresenter
     {
-        public GamePresenter(GameModel model, GameView gameView, GameScreenView screenView, ResultScreenView resultView) : base(model, gameView, screenView, resultView)
+        public GamePresenter(GameModel model, GameView gameView) : base(model, gameView)
         {
-            
-
+            gameView.Init();
         }
 
     }
