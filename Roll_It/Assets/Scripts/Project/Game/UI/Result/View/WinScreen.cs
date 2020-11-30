@@ -26,7 +26,7 @@ public class WinScreen : MonoBehaviour
         this.starParticlePrefab.SetActive(false);
         nextButton.onClick.AddListener(() =>
         {
-            Debug.Log("---> click next Button");
+            // Debug.Log("---> click next Button");
             Next.OnNext();
             this.gameObject.SetActive(false);
         });
