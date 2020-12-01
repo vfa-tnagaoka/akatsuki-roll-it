@@ -421,7 +421,7 @@ PrefabInstance:
     - target: {fileID: 2298487998045011674, guid: 7ac9d8aa04cf8421fa6df1e665420461,
         type: 3}
       propertyPath: colors.Array.size
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2298487998045011674, guid: 7ac9d8aa04cf8421fa6df1e665420461,
         type: 3}
