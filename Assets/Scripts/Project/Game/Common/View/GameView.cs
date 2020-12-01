@@ -86,27 +86,13 @@ namespace Project.Game.View
                     if (view.IsOpen)
                     {
                         var isClose = view.Close();
-                        // Debug.Log ("is close ---> " + isClose);
-                        // if (isClose)
-                        // {
-                        //     Debug.Log ("close ---> " + isClose);
-
-                        //     this.closeCylinder++;
-                        // }
                     }
-
-                    // if (this.closeCylinder >= this.numberCylinder)
-                    // {
-                    //     this.closeCylinder = 0;
-                    //     StartCoroutine(Win());
-                    // }
                 }
             }
         }
 
         private void OnCheckWin()
         {
-            // Debug.Log("---> OnCheckWin");
             this.closeCylinder++;
             if (this.closeCylinder >= this.numberCylinder)
             {
