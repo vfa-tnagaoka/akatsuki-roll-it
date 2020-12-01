@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 434bc1feff2a1477089810d342bc8bd0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,6 +159,15 @@ MonoBehaviour:
   - {fileID: 2298487998606606307}
   numberCylinder: 0
   closeCylinder: 0
+  colors:
+  - {r: 0.9150943, g: 0.047481313, b: 0.047481313, a: 0}
+  - {r: 0.29560974, g: 0.9433962, b: 0.12014952, a: 0}
+  - {r: 0.8962264, g: 0.866634, b: 0.866634, a: 0}
+  - {r: 0.6541081, g: 0.8301887, b: 0.16838734, a: 0}
+  - {r: 0.9056604, g: 0.82742244, b: 0.12388753, a: 0}
+  - {r: 0.19706532, g: 0.013349922, b: 0.9433962, a: 0}
+  - {r: 0.039248828, g: 0.9245283, b: 0.8697701, a: 0}
+  - {r: 0.9119743, g: 0.039215688, b: 0.9254902, a: 0}
 --- !u!1 &2298487998047463392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,7 +2574,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
-  m_Intensity: 0.8
+  m_Intensity: 0.3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.802082

@@ -48,7 +48,7 @@ namespace Project.Game.View
         {
             Init();
         }
-        
+
         public void Init()
         {
             this.canRayCast = false;
@@ -85,28 +85,40 @@ namespace Project.Game.View
 
                     if (view.IsOpen)
                     {
-                        if (view.Close())
-                        {
-                            // Debug.Log("closeCylinder -- count");
-                            this.closeCylinder++;
-                        }
+                        var isClose = view.Close();
+                        // Debug.Log ("is close ---> " + isClose);
+                        // if (isClose)
+                        // {
+                        //     Debug.Log ("close ---> " + isClose);
+
+                        //     this.closeCylinder++;
+                        // }
                     }
 
-                    if (this.closeCylinder >= this.numberCylinder)
-                    {
-                        // this.canRayCast = false;
-                        // winScreen.Show((float)((System.DateTime.Now - startTime).TotalSeconds));
-                        this.closeCylinder = 0;
-                        StartCoroutine(Win());
-                    }
+                    // if (this.closeCylinder >= this.numberCylinder)
+                    // {
+                    //     this.closeCylinder = 0;
+                    //     StartCoroutine(Win());
+                    // }
                 }
+            }
+        }
+
+        private void OnCheckWin()
+        {
+            Debug.Log("---> OnCheckWin");
+            this.closeCylinder++;
+            if (this.closeCylinder >= this.numberCylinder)
+            {
+                this.closeCylinder = 0;
+                StartCoroutine(Win());
             }
         }
 
         public IEnumerator Win()
         {
-            yield return new WaitForSeconds(2f);
-            // Debug.LogError("win screen");
+            yield return new WaitForSeconds(0.5f);
+
             this.canRayCast = false;
             winScreen.Show((float)((System.DateTime.Now - startTime).TotalSeconds));
         }
@@ -124,8 +136,6 @@ namespace Project.Game.View
             Transform level = this.Levels[indexLv];
             level.SetActive(true);
 
-            // Debug.Log("Create Map ---lv--> " + level.childCount);
-
             numberCylinder = level.childCount;
             float yPos = 0;
             tempColor = colors;
@@ -139,8 +149,6 @@ namespace Project.Game.View
             }
 
             startTime = System.DateTime.Now;
-            // Debug.Log("Create Map ---lv--> end");
-
         }
 
         public void InitCylinder(int index, Vector3 position, Quaternion quaternion)
@@ -167,11 +175,14 @@ namespace Project.Game.View
             int positionColor = UnityEngine.Random.Range(0, tempColor.Length);
             cylinderView.RandomColor(tempColor[positionColor]);
             tempColor = (Color[])RemoveAt(tempColor, positionColor);
-            Debug.Log("size color :" + tempColor.Length);
+
+            cylinderView.OnClose -= OnCheckWin;
+            cylinderView.OnClose += OnCheckWin;
+
             cylinderView.Open();
 
         }
-        private  Array RemoveAt(Array source, int index)
+        private Array RemoveAt(Array source, int index)
         {
             if (source == null)
                 throw new ArgumentNullException("source");
@@ -188,7 +199,6 @@ namespace Project.Game.View
 
         public void ResetMap()
         {
-            // Debug.LogWarning("------> reset map");
             this.numberCylinder = 0;
             this.closeCylinder = 0;
 

@@ -17,14 +17,14 @@ public class CylinderView : AbstractView
 
     private Tweener closeMoveTweener;
     private Tweener closeScaleTweener;
-
     public bool IsOpen = false;
-
 
     public int ID;
 
     private Dictionary<int, CylinderView> belowObjects = new Dictionary<int, CylinderView>();
     private Dictionary<int, CylinderView> aboveObjects = new Dictionary<int, CylinderView>();
+
+    public Action OnClose = new Action(() => { });
 
     private void Start()
     {
@@ -41,7 +41,7 @@ public class CylinderView : AbstractView
 
     public void RandomColor(Color color)
     {
-        
+
         Material material = new Material(Shader.Find("Standard"));
         material.color = color;
         CylinderGo.GetComponent<MeshRenderer>().material = material;
@@ -60,32 +60,19 @@ public class CylinderView : AbstractView
 
     public bool Close()
     {
-        // if (this.aboveObjects.Count <= 0)
-        // {
-        //     this.IsOpen = false;
-
-        //     this.closeMoveTweener = this.CylinderGo.transform.DOLocalMoveZ(0.5f, 2f);
-        //     this.closeScaleTweener = this.LineGo.transform.DOScaleZ(1, 2f);
-
-        //     if (this.belowObjects.Count <= 0) return true;
-        //     foreach (var belowObject in this.belowObjects)
-        //     {
-        //         belowObject.Value.RemoveAboveObject(this.ID);
-        //     }
-
-        //     return true;
-        // }
-
-        // return false;
-
-
-        this.closeMoveTweener = this.CylinderGo.transform.DOLocalMoveZ(0.5f, 2f);
-        this.closeScaleTweener = this.LineGo.transform.DOScaleZ(1, 2f);
-
         if (!this.IsOpen) return false;
+
+        this.IsOpen = false;
+        this.closeMoveTweener = this.CylinderGo.transform.DOLocalMoveZ(0.5f, 2f);
+        this.closeScaleTweener = this.LineGo.transform.DOScaleZ(1, 2f).OnComplete(() =>
+        {
+            // Debug.Log("--> finsh scale");
+            this.OnClose();
+        });
+
+        // Debug.Log("---> 1--> " + this.aboveObjects.Count);
         if (this.aboveObjects.Count <= 0)
         {
-            this.IsOpen = false;
             if (this.belowObjects.Count <= 0) return true;
             foreach (var belowObject in this.belowObjects)
             {
@@ -108,7 +95,6 @@ public class CylinderView : AbstractView
 
     public void ResetCylinder()
     {
-        // Close();
         this.belowObjects.Clear();
         this.aboveObjects.Clear();
         this.LineGo.transform.localScale.Set(1, 1, 1);
@@ -138,8 +124,9 @@ public class CylinderView : AbstractView
     {
         if (other.CompareTag("Line"))
         {
-            if (this.aboveObjects.Count > 0 && this.IsOpen)
-            { 
+            if (this.aboveObjects.Count > 0 && !this.IsOpen)
+            {
+                // Debug.Log("-- open again!");
                 this.closeMoveTweener.Kill();
                 this.closeScaleTweener.Kill();
                 Open();
