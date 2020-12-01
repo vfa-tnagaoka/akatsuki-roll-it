@@ -23,6 +23,10 @@ namespace Project.Game.View
 
         [SerializeField] private int numberCylinder;
         [SerializeField] private int closeCylinder;
+
+        [SerializeField] Color[] colors;
+        private Color[] tempColor;
+
         private System.DateTime startTime;
         private bool canRayCast = false;
 
@@ -44,7 +48,7 @@ namespace Project.Game.View
         {
             Init();
         }
-
+        
         public void Init()
         {
             this.canRayCast = false;
@@ -124,7 +128,7 @@ namespace Project.Game.View
 
             numberCylinder = level.childCount;
             float yPos = 0;
-
+            tempColor = colors;
             for (int i = 0; i < numberCylinder; i++)
             {
                 var objPos = level.GetChild(i);
@@ -160,9 +164,26 @@ namespace Project.Game.View
             cylinderGo.transform.rotation = quaternion;
 
             cylinderView.ID = index;
-            cylinderView.RandomColor();
+            int positionColor = UnityEngine.Random.Range(0, tempColor.Length);
+            cylinderView.RandomColor(tempColor[positionColor]);
+            tempColor = (Color[])RemoveAt(tempColor, positionColor);
+            Debug.Log("size color :" + tempColor.Length);
             cylinderView.Open();
 
+        }
+        private  Array RemoveAt(Array source, int index)
+        {
+            if (source == null)
+                throw new ArgumentNullException("source");
+
+            if (0 > index || index >= source.Length)
+                throw new ArgumentOutOfRangeException("index", index, "index is outside the bounds of source array");
+
+            Array dest = Array.CreateInstance(source.GetType().GetElementType(), source.Length - 1);
+            Array.Copy(source, 0, dest, 0, index);
+            Array.Copy(source, index + 1, dest, index, source.Length - index - 1);
+
+            return dest;
         }
 
         public void ResetMap()

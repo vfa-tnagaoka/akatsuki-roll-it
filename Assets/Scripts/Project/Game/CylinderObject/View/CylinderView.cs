@@ -39,6 +39,15 @@ public class CylinderView : AbstractView
         LineGo.transform.GetChild(0).GetComponent<MeshRenderer>().material = material;
     }
 
+    public void RandomColor(Color color)
+    {
+        
+        Material material = new Material(Shader.Find("Standard"));
+        material.color = color;
+        CylinderGo.GetComponent<MeshRenderer>().material = material;
+        LineGo.transform.GetChild(0).GetComponent<MeshRenderer>().material = material;
+    }
+
     public void Open()
     {
 
