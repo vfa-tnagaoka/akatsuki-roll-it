@@ -54,6 +54,7 @@ public class CylinderView : AbstractView
         this.CylinderGo.transform.DOLocalMoveZ(5, 1f);
         this.LineGo.transform.DOScaleZ(5, 1f).OnComplete(() =>
         {
+            // Debug.Log("open --> " + ID);
             this.IsOpen = true;
         });
     }
@@ -107,6 +108,7 @@ public class CylinderView : AbstractView
     {
         if (other.CompareTag("Line"))
         {
+            Debug.Log("trigger line" + other.name);
             var cylinderView = other.transform.parent.parent.GetComponent<CylinderView>();
             if (cylinderView.transform.position.y > this.transform.position.y)
             {
@@ -124,9 +126,11 @@ public class CylinderView : AbstractView
     {
         if (other.CompareTag("Line"))
         {
-            if (this.aboveObjects.Count > 0 && !this.IsOpen)
+            // Debug.Log("-- CylinderTrigger - " + this.aboveObjects.Count + " -- " + !IsOpen);
+
+            if (this.aboveObjects.Count > 0)// && !this.IsOpen)
             {
-                // Debug.Log("-- open again!");
+                Debug.Log("-- open again!");
                 this.closeMoveTweener.Kill();
                 this.closeScaleTweener.Kill();
                 Open();

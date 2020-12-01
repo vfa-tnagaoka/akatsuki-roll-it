@@ -106,7 +106,7 @@ namespace Project.Game.View
 
         private void OnCheckWin()
         {
-            Debug.Log("---> OnCheckWin");
+            // Debug.Log("---> OnCheckWin");
             this.closeCylinder++;
             if (this.closeCylinder >= this.numberCylinder)
             {
