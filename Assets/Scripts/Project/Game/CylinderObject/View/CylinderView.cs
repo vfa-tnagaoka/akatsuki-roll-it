@@ -9,8 +9,14 @@ using System;
 public class CylinderView : AbstractView
 {
     [SerializeField] private GameObject CylinderGo;
+    [SerializeField] private Transform posLeft;
+    [SerializeField] private Transform posRight;
     [SerializeField] private GameObject LineGo;
+    [SerializeField] private LayerMask layerMask;
     [SerializeField] Color[] colors;
+
+    private Tweener closeMoveTweener;
+    private Tweener closeScaleTweener;
 
     public bool IsOpen = false;
 
@@ -54,14 +60,32 @@ public class CylinderView : AbstractView
 
     public bool Close()
     {
-        if(!this.IsOpen) return false;
+        // if (this.aboveObjects.Count <= 0)
+        // {
+        //     this.IsOpen = false;
+
+        //     this.closeMoveTweener = this.CylinderGo.transform.DOLocalMoveZ(0.5f, 2f);
+        //     this.closeScaleTweener = this.LineGo.transform.DOScaleZ(1, 2f);
+
+        //     if (this.belowObjects.Count <= 0) return true;
+        //     foreach (var belowObject in this.belowObjects)
+        //     {
+        //         belowObject.Value.RemoveAboveObject(this.ID);
+        //     }
+
+        //     return true;
+        // }
+
+        // return false;
+
+
+        this.closeMoveTweener = this.CylinderGo.transform.DOLocalMoveZ(0.5f, 2f);
+        this.closeScaleTweener = this.LineGo.transform.DOScaleZ(1, 2f);
+
+        if (!this.IsOpen) return false;
         if (this.aboveObjects.Count <= 0)
         {
             this.IsOpen = false;
-
-            this.CylinderGo.transform.DOLocalMoveZ(0.5f, 2f);
-            this.LineGo.transform.DOScaleZ(1, 2f);
-
             if (this.belowObjects.Count <= 0) return true;
             foreach (var belowObject in this.belowObjects)
             {
@@ -108,6 +132,18 @@ public class CylinderView : AbstractView
             }
         }
 
-        // Debug.Log("OnTriggerEnter --> " + this.ID + " -above- " + this.aboveObjects.Count + " -below- " + this.belowObjects.Count);
+    }
+
+    public void OnCylinderTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Line"))
+        {
+            if (this.aboveObjects.Count > 0 && this.IsOpen)
+            { 
+                this.closeMoveTweener.Kill();
+                this.closeScaleTweener.Kill();
+                Open();
+            }
+        }
     }
 }
