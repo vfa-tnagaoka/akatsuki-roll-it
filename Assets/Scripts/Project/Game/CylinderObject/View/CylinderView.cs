@@ -14,6 +14,7 @@ public class CylinderView : AbstractView
     [SerializeField] private GameObject LineGo;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] Color[] colors;
+    [SerializeField] Texture rollPageTexture;
 
     private Tweener closeMoveTweener;
     private Tweener closeScaleTweener;
@@ -41,11 +42,15 @@ public class CylinderView : AbstractView
 
     public void RandomColor(Color color)
     {
+        Material materialLine = new Material(Shader.Find("Standard"));
+        materialLine.color = color;
 
-        Material material = new Material(Shader.Find("Standard"));
-        material.color = color;
-        CylinderGo.GetComponent<MeshRenderer>().material = material;
-        LineGo.transform.GetChild(0).GetComponent<MeshRenderer>().material = material;
+        Material materialCydinder = new Material(Shader.Find("Standard"));
+        materialCydinder.color = color;
+        materialCydinder.mainTexture = rollPageTexture;
+        
+        CylinderGo.transform.GetChild(0).GetComponent<MeshRenderer>().material = materialCydinder;
+        LineGo.transform.GetChild(0).GetComponent<MeshRenderer>().material = materialLine;
     }
 
     public void Open()
@@ -54,7 +59,6 @@ public class CylinderView : AbstractView
         this.CylinderGo.transform.DOLocalMoveZ(5, 1f);
         this.LineGo.transform.DOScaleZ(5, 1f).OnComplete(() =>
         {
-            // Debug.Log("open --> " + ID);
             this.IsOpen = true;
         });
     }
@@ -67,11 +71,9 @@ public class CylinderView : AbstractView
         this.closeMoveTweener = this.CylinderGo.transform.DOLocalMoveZ(0.5f, 2f);
         this.closeScaleTweener = this.LineGo.transform.DOScaleZ(1, 2f).OnComplete(() =>
         {
-            // Debug.Log("--> finsh scale");
             this.OnClose();
         });
 
-        // Debug.Log("---> 1--> " + this.aboveObjects.Count);
         if (this.aboveObjects.Count <= 0)
         {
             if (this.belowObjects.Count <= 0) return true;
@@ -126,11 +128,9 @@ public class CylinderView : AbstractView
     {
         if (other.CompareTag("Line"))
         {
-            // Debug.Log("-- CylinderTrigger - " + this.aboveObjects.Count + " -- " + !IsOpen);
 
-            if (this.aboveObjects.Count > 0)// && !this.IsOpen)
+            if (this.aboveObjects.Count > 0)
             {
-                Debug.Log("-- open again!");
                 this.closeMoveTweener.Kill();
                 this.closeScaleTweener.Kill();
                 Open();
