@@ -29,7 +29,7 @@ public class GameTest
     // [TestCase(0)]
     public IEnumerator LoadGamelevel_lv0()
     {
-        int level = 5;
+        int level = 7;
         // Debug.Log("LoadGamelevel --> start - " + gameView);
         GameView gameView = Theater.Load<GameView>(ResourcePathConfig.GameViewPath);
         WinScreen winView = Theater.Load<WinScreen>(ResourcePathConfig.WinViewPath);
