@@ -57,7 +57,7 @@ public class CylinderView : AbstractView
     {
 
         this.CylinderGo.transform.DOLocalMoveZ(5, 1f);
-        this.LineGo.transform.DOScaleZ(5, 1f).OnComplete(() =>
+        this.LineGo.transform.DOScaleZ(5.3f, 1f).OnComplete(() =>
         {
             this.CylinderGo.transform.GetComponent<CapsuleCollider>().enabled = true;
             this.IsOpen = true;
