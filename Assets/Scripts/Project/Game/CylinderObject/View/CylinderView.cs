@@ -48,7 +48,7 @@ public class CylinderView : AbstractView
         Material materialCydinder = new Material(Shader.Find("Standard"));
         materialCydinder.color = color;
         materialCydinder.mainTexture = rollPageTexture;
-        
+
         CylinderGo.transform.GetChild(0).GetComponent<MeshRenderer>().material = materialCydinder;
         LineGo.transform.GetChild(0).GetComponent<MeshRenderer>().material = materialLine;
     }
@@ -59,6 +59,7 @@ public class CylinderView : AbstractView
         this.CylinderGo.transform.DOLocalMoveZ(5, 1f);
         this.LineGo.transform.DOScaleZ(5, 1f).OnComplete(() =>
         {
+            this.CylinderGo.transform.GetComponent<CapsuleCollider>().enabled = true;
             this.IsOpen = true;
         });
     }
@@ -71,6 +72,7 @@ public class CylinderView : AbstractView
         this.closeMoveTweener = this.CylinderGo.transform.DOLocalMoveZ(0.5f, 2f);
         this.closeScaleTweener = this.LineGo.transform.DOScaleZ(1, 2f).OnComplete(() =>
         {
+            this.CylinderGo.transform.GetComponent<CapsuleCollider>().enabled = false;
             this.OnClose();
         });
 
