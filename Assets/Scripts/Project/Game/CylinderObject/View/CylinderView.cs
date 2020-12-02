@@ -14,6 +14,7 @@ public class CylinderView : AbstractView
     [SerializeField] private GameObject LineGo;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] Color[] colors;
+    [SerializeField] Texture rollPageTexture;
 
     private Tweener closeMoveTweener;
     private Tweener closeScaleTweener;
@@ -41,11 +42,15 @@ public class CylinderView : AbstractView
 
     public void RandomColor(Color color)
     {
+        Material materialLine = new Material(Shader.Find("Standard"));
+        materialLine.color = color;
 
-        Material material = new Material(Shader.Find("Standard"));
-        material.color = color;
-        CylinderGo.GetComponent<MeshRenderer>().material = material;
-        LineGo.transform.GetChild(0).GetComponent<MeshRenderer>().material = material;
+        Material materialCydinder = new Material(Shader.Find("Standard"));
+        materialCydinder.color = color;
+        materialCydinder.mainTexture = rollPageTexture;
+        
+        CylinderGo.transform.GetChild(0).GetComponent<MeshRenderer>().material = materialCydinder;
+        LineGo.transform.GetChild(0).GetComponent<MeshRenderer>().material = materialLine;
     }
 
     public void Open()
