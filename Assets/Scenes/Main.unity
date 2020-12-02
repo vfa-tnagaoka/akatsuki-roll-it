@@ -315,6 +315,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5894393626477118264, guid: 3fe7c78114e944189a12df80cb937409,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6870034597273980085, guid: 3fe7c78114e944189a12df80cb937409,
         type: 3}
       propertyPath: stars.Array.size

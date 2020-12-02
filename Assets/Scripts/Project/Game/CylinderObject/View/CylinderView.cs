@@ -112,15 +112,21 @@ public class CylinderView : AbstractView
     {
         if (other.CompareTag("Line"))
         {
-            Debug.Log("trigger line" + other.name);
+            // Debug.Log("trigger line" + other.name);
             var cylinderView = other.transform.parent.parent.GetComponent<CylinderView>();
             if (cylinderView.transform.position.y > this.transform.position.y)
             {
-                this.aboveObjects.Add(cylinderView.ID, cylinderView);
+                if (!this.aboveObjects.ContainsKey(cylinderView.ID))
+                {
+                    this.aboveObjects.Add(cylinderView.ID, cylinderView);
+                }
             }
             else
             {
-                this.belowObjects.Add(cylinderView.ID, cylinderView);
+                if (!this.belowObjects.ContainsKey(cylinderView.ID))
+                {
+                    this.belowObjects.Add(cylinderView.ID, cylinderView);
+                }
             }
         }
 
@@ -133,9 +139,12 @@ public class CylinderView : AbstractView
 
             if (this.aboveObjects.Count > 0)
             {
-                this.closeMoveTweener.Kill();
-                this.closeScaleTweener.Kill();
-                Open();
+                if (other.transform.parent.parent.position.y > this.transform.position.y)
+                {
+                    this.closeMoveTweener.Kill();
+                    this.closeScaleTweener.Kill();
+                    Open();
+                }
             }
         }
     }
