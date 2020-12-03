@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 490612242267698488}
   - component: {fileID: 4880773849195298741}
   - component: {fileID: 2951268021747800498}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: triangles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4860,7 +4860,7 @@ GameObject:
   - component: {fileID: 7944754747287011973}
   - component: {fileID: 6888239319759651209}
   - component: {fileID: 1369504047151381603}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: triangles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9707,7 +9707,7 @@ GameObject:
   - component: {fileID: 6663528226258336257}
   - component: {fileID: 7772789466964753442}
   - component: {fileID: 351624120240349289}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: circles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14554,7 +14554,7 @@ GameObject:
   - component: {fileID: 8014052103405655105}
   - component: {fileID: 7232783194842581242}
   - component: {fileID: 8677078167397481102}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: circles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20079,6 +20079,7 @@ RectTransform:
   m_Children:
   - {fileID: 1862360718076165953}
   - {fileID: 9188734651715220508}
+  - {fileID: 3617176278559288702}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20191,7 +20192,7 @@ GameObject:
   - component: {fileID: 1621582638746008510}
   - component: {fileID: 1540165952620639592}
   - component: {fileID: 802657327268544199}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: lines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25085,7 +25086,7 @@ GameObject:
   - component: {fileID: 7544145603490493784}
   - component: {fileID: 1794895743102449377}
   - component: {fileID: 5851251285534533505}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: lines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30015,7 +30016,7 @@ GameObject:
   - component: {fileID: 6092661125549519347}
   - component: {fileID: 918725777170344610}
   - component: {fileID: 3878053950706505893}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: circles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34862,7 +34863,7 @@ GameObject:
   - component: {fileID: 5665931201501527628}
   - component: {fileID: 141828699115780218}
   - component: {fileID: 601104677178027100}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: triangles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39709,7 +39710,7 @@ GameObject:
   - component: {fileID: 8702697329870099568}
   - component: {fileID: 1215326148364611868}
   - component: {fileID: 1586293056779183557}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: triangles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44650,7 +44651,7 @@ GameObject:
   - component: {fileID: 8952387323953202415}
   - component: {fileID: 8837776273871098042}
   - component: {fileID: 5114881460334347802}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Explosion_3 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49500,7 +49501,7 @@ GameObject:
   - component: {fileID: 7453511031032574769}
   - component: {fileID: 576707743027183345}
   - component: {fileID: 7262802138002383043}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: lines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54544,7 +54545,7 @@ GameObject:
   - component: {fileID: 882528435605844644}
   - component: {fileID: 1433158482437712032}
   - component: {fileID: 1889079691895912584}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Explosion_3 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59394,7 +59395,7 @@ GameObject:
   - component: {fileID: 2650097039536932420}
   - component: {fileID: 1878974237157844815}
   - component: {fileID: 1690355869819430649}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Explosion_3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64244,7 +64245,7 @@ GameObject:
   - component: {fileID: 8589939830928340385}
   - component: {fileID: 1493614386141615741}
   - component: {fileID: 4524492078187186327}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: circles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69091,7 +69092,7 @@ GameObject:
   - component: {fileID: 5984323762055559930}
   - component: {fileID: 9047164048034720114}
   - component: {fileID: 5121395382352364855}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: lines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73947,7 +73948,7 @@ GameObject:
   - component: {fileID: 5984583600421007172}
   - component: {fileID: 5705996873866625184}
   - component: {fileID: 575597278629993732}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Explosion_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78797,7 +78798,7 @@ GameObject:
   - component: {fileID: 5984842953166748402}
   - component: {fileID: 5637927586835899915}
   - component: {fileID: 6526576179328105245}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: triangles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83644,7 +83645,7 @@ GameObject:
   - component: {fileID: 5983951655878304802}
   - component: {fileID: 8477944659610766978}
   - component: {fileID: 4751319474243361977}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: circles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88491,7 +88492,7 @@ GameObject:
   - component: {fileID: 5984794471364191095}
   - component: {fileID: 1118855440881812205}
   - component: {fileID: 6160842974196534792}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: lines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93347,7 +93348,7 @@ GameObject:
   - component: {fileID: 6591982098114304805}
   - component: {fileID: 4789709040374532334}
   - component: {fileID: 5268490527606248781}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Explosion_3 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98184,6 +98185,94 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   fixedTime: 1
+--- !u!1 &7215722123271203254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3617176278559288702}
+  - component: {fileID: 6524264430458001744}
+  - component: {fileID: 1362808098501075072}
+  m_Layer: 5
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3617176278559288702
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215722123271203254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1862360719309159250}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!20 &6524264430458001744
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215722123271203254}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 32
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &1362808098501075072
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215722123271203254}
+  m_Enabled: 1
 --- !u!1 &7350261510889360778
 GameObject:
   m_ObjectHideFlags: 0
