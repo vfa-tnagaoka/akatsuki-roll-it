@@ -375,6 +375,11 @@ PrefabInstance:
       propertyPath: particleColors.Array.data[2].b
       value: 0.05406728
       objectReference: {fileID: 0}
+    - target: {fileID: 7520767505981400662, guid: 3fe7c78114e944189a12df80cb937409,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fe7c78114e944189a12df80cb937409, type: 3}
 --- !u!114 &1545002084 stripped
