@@ -16,6 +16,8 @@ public class WinScreen : MonoBehaviour
     [SerializeField] Button nextButton = default;
     [SerializeField] GameObject scoreContainer = default;
 
+    [SerializeField] Text clearText = default;
+
     [SerializeField] Color[] particleColors = default;
 
     [SerializeField] GameObject[] effectConfetties = default;
@@ -44,18 +46,22 @@ public class WinScreen : MonoBehaviour
             effectConfetti.SetActive(false);
         }
 
-        foreach (var star in stars)
-        {
-            star.gameObject.GetComponent<RectTransform>().localScale = Vector3.zero;
-        }
+        //foreach (var star in stars)
+        //{
+        //    star.gameObject.GetComponent<RectTransform>().localScale = Vector3.zero;
+        //}
+        clearText.gameObject.GetComponent<RectTransform>().localScale = Vector3.zero;
 
         float delay = 0;
-        foreach (var star in stars)
-        {
-            star.gameObject.GetComponent<RectTransform>().DOScale(1, 0.5f).SetEase(Ease.OutBounce).SetDelay(delay);
-            StartCoroutine(DrawParticle(star.transform, delay));
-            delay += 0.2f;
-        }
+        clearText.gameObject.GetComponent<RectTransform>().DOScale(1, 0.5f).SetEase(Ease.OutBounce).SetDelay(delay);
+        StartCoroutine(DrawParticle(clearText.transform, delay));
+        delay += 0.2f;
+        //foreach (var star in stars)
+        //{
+        //    star.gameObject.GetComponent<RectTransform>().DOScale(1, 0.5f).SetEase(Ease.OutBounce).SetDelay(delay);
+        //    StartCoroutine(DrawParticle(star.transform, delay));
+        //    delay += 0.2f;
+        //}
 
         StartCoroutine(ShowConfetiti(1.5f));
 
