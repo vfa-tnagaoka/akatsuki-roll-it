@@ -45,8 +45,9 @@ namespace Project.Game.View
 
 
         private void Start()
-        {
-            Init();
+        {           
+            AdjustManager.Instance.Initialized();
+            Init();           
         }
 
         public void Init()

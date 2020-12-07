@@ -4,7 +4,8 @@
         "UDL.Core",
         "UniRx",
         "UnityEngine.UI",
-        "NewAssembly"
+        "NewAssembly",
+        "Adjust"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
